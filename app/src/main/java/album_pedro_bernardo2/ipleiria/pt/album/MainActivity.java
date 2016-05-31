@@ -19,6 +19,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -103,17 +105,49 @@ public class MainActivity extends AppCompatActivity {
 
         listamusica.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Clicou no item " + position, Toast.LENGTH_SHORT).show();
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                //Toast.makeText(MainActivity.this, "Clicou no item " + position, Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder build2 = new AlertDialog.Builder(MainActivity.this);
+                LinearLayout alert = new LinearLayout(MainActivity.this);
+                alert.setOrientation(LinearLayout.VERTICAL);
+                build2.setCancelable(true);
+                build2.setMessage(R.string.are_you_sure_delete);
 
-                //musicas.remove(position);
+                build2.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        musicas.remove(position);
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, musicas);
-                ListView listView = (ListView) findViewById(R.id.playlist_list);
-                listView.setAdapter(adapter);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, musicas);
+                        ListView listView = (ListView) findViewById(R.id.playlist_list);
+                        listView.setAdapter(adapter);
+
+                        Toast.makeText(MainActivity.this, "Saving...", Toast.LENGTH_SHORT).show();
+
+                        SharedPreferences preferencias = getSharedPreferences("appmusicas",0);
+                        SharedPreferences.Editor editar = preferencias.edit();
+
+                        HashSet musicas_set = new HashSet(musicas);
+                        editar.putStringSet("musicas_key", musicas_set);
+
+                        editar.commit();
+                    }
+                });
+                build2.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //dialog.cancel();
+                    }
+                });
+
+                build2.show();
+
+
+
                 return false;
+
             }
         });
+
+
         
     }
 

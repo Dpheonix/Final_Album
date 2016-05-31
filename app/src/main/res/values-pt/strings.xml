@@ -35,4 +35,7 @@
     <string name="rate_this">Avalia isto:</string>
     <string name="search">Pesquisa</string>
     <string name="write_search_term">Escreva aqui...</string>
+    <string name="no">Não</string>
+    <string name="yes">Sim</string>
+    <string name="are_you_sure_delete">Tem a certeza que quer apagar esta música?</string>
 </resources>
