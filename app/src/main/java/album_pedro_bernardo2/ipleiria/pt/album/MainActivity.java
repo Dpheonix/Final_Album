@@ -100,7 +100,19 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> modoadapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,modos);
         spinop.setAdapter(modoadapter);
 
+        listamusica.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "Clicou no item " + position, Toast.LENGTH_SHORT).show();
 
+                //musicas.remove(position);
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, musicas);
+                ListView listView = (ListView) findViewById(R.id.playlist_list);
+                listView.setAdapter(adapter);
+                return false;
+            }
+        });
         
     }
 
