@@ -74,15 +74,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        SharedPreferences preferencias = getSharedPreferences("appmusicas",0);
+        Set<String> musicas_set = preferencias.getStringSet("musicas_key", new HashSet<String>());
+        musicas= new ArrayList<String>(musicas_set);
 
-        musicas= new ArrayList<String>();
-
-        musicas.add("Wake Up Inside | Evanescence | Heavy Sleep | 2007 | 5☆");
+        /*musicas.add("Wake Up Inside | Evanescence | Heavy Sleep | 2007 | 5☆");
         musicas.add("Can't Wake Up | Evanescence | Heavy Sleep | 2008 | 1☆");
         musicas.add("Save Me | Coastguard | Lifesaver | 2010 | 4☆");
         musicas.add("Sandstorm | Darude | Before the Storm | 2000 | 5☆");
         musicas.add("The Sound of Silence | Simon/Garfunkel | Wednesday Morning, 3 AM | 1964 | 4☆");
-        musicas.add("Moonlight Sonata | Beethoven | Sonata No. 14 | 1801 | 2☆");
+        musicas.add("Moonlight Sonata | Beethoven | Sonata No. 14 | 1801 | 2☆");*/
 
 
         ArrayAdapter<String> adaptamusica = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,android.R.id.text1,musicas);
