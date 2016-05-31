@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Album_Pedro_Bernardo</string>
+    <string name="acept">Aceitar</string>
+    <string name="action_settings">Definições</string>
+    <string name="add_fail1">Erro - Ano deve ser numérico</string>
+    <string name="add_fail2">Erro - Avaliação deve ser numérica</string>
+    <string name="add_fail3">Erro - Preencha todos os campos</string>
+    <string name="add_success">Nova música adicionada</string>
+    <string name="album">Álbum: </string>
+    <string name="album_spiner">Álbum</string>
+    <string name="all_spiner">Tudo</string>
+    <string name="ano">Ano: </string>
+    <string name="ano_spiner">Ano</string>
+    <string name="artist">Artista: </string>
+    <string name="artist_spiner">Artista</string>
+    <string name="cancel">Cancelar</string>
+    <string name="found1">Encontrados </string>
+    <string name="found2"> resultados</string>
+    <string name="hint_album">Nome do Álbum</string>
+    <string name="hint_artist">Nome de Artista</string>
+    <string name="hint_rating">Avaliação</string>
+    <string name="hint_song">Nome de Música</string>
+    <string name="hint_year">Ano de Lançamento</string>
+    <string name="new_song_enter">Introduza informação da nova música:</string>
+    <string name="no_results">Nenhum resultado encontrado.</string>
+    <string name="nome">Nome: </string>
+    <string name="rating_error">Avaliação tem de ser numérica</string>
+    <string name="rating_spiner">Avaliação</string>
+    <string name="song_spiner">Nome de Música</string>
+    <string name="add_song">Adicionar música</string>
+    <string name="info">Informação</string>
+    <string name="now_playing">A reproduzir</string>
+    <string name="pause_resume">Pausa/Resumir</string>
+    <string name="rate_this">Avalia isto:</string>
+    <string name="search">Pesquisa</string>
+    <string name="write_search_term">Escreva aqui...</string>
+</resources>
