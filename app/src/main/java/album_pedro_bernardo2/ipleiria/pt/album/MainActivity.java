@@ -104,7 +104,19 @@ public class MainActivity extends AppCompatActivity {
         
     }
 
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Toast.makeText(MainActivity.this, "Saving...", Toast.LENGTH_SHORT).show();
 
+        SharedPreferences preferencias = getSharedPreferences("appmusicas",0);
+        SharedPreferences.Editor editar = preferencias.edit();
+
+        HashSet musicas_set = new HashSet(musicas);
+        editar.putStringSet("musicas_key", musicas_set);
+
+        editar.commit();
+    }
 
     public void OnClick_search(View view){
         EditText searchtext = (EditText)findViewById(R.id.termo_search);
@@ -261,6 +273,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 }
