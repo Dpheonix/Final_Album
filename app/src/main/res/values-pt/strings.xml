@@ -38,4 +38,7 @@
     <string name="no">Não</string>
     <string name="yes">Sim</string>
     <string name="are_you_sure_delete">Tem a certeza que quer apagar esta música?</string>
+    <string name="publisher">Editora:</string>
+    <string name="publisher_spiner">Editor</string>
+    <string name="hint_publisher">Nome da Editora</string>
 </resources>
