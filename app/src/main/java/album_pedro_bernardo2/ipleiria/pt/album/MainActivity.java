@@ -50,8 +50,9 @@ public class MainActivity extends AppCompatActivity {
                 String dados_artist = click_split[1];
                 String dados_album = click_split[2];
                 String dados_year = click_split[3];
-                String dados_rating = click_split[4];
-                String dados_rating_dividido[] = String.valueOf(click_split[4]).split("☆");
+                String dados_editora = click_split[4];
+                String dados_rating = click_split[5];
+                String dados_rating_dividido[] = String.valueOf(click_split[5]).split("☆");
                 String dados_rating_final = dados_rating_dividido[0];
 
                 //Toast.makeText(MainActivity.this, dados_rating_dividido[0], Toast.LENGTH_SHORT).show();
@@ -62,12 +63,14 @@ public class MainActivity extends AppCompatActivity {
                 TextView meta2 = (TextView) findViewById(R.id.meta_artist);
                 TextView meta3 = (TextView) findViewById(R.id.meta_album);
                 TextView meta4 = (TextView) findViewById(R.id.meta_year);
+                TextView meta5 = (TextView) findViewById(R.id.meta_publisher);
                 RatingBar starsbar = (RatingBar) findViewById(R.id.ratingstars);
 
                 meta1.setText(getString(R.string.nome) + dados_name);
                 meta2.setText(getString(R.string.artist) + dados_artist);
                 meta3.setText(getString(R.string.album) + dados_album);
                 meta4.setText(getString(R.string.ano) + dados_year);
+                meta5.setText(getString(R.string.publisher) + dados_editora);
                 starsbar.setRating(dados_rating_parsed);
 
 
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         modos.add(getString(R.string.album_spiner));
         modos.add(getString(album_pedro_bernardo2.ipleiria.pt.album.R.string.ano_spiner));
         modos.add(getString(album_pedro_bernardo2.ipleiria.pt.album.R.string.rating_spiner));
+        modos.add(getString(R.string.publisher_spiner));
 
         ArrayAdapter<String> modoadapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,modos);
         spinop.setAdapter(modoadapter);
@@ -193,6 +197,16 @@ public class MainActivity extends AppCompatActivity {
                     found_mus++;
 
                 }
+            }else if(categoria.equals(getString(R.string.publisher_spiner))) {
+                String[] split = match_termo.split("\\|");
+                String publisher = split[4];
+
+                if (publisher.contains(termo)) {
+
+                    searchresults.add(match_termo);
+                    found_mus++;
+
+                }
             }else if(categoria.equals(getString(R.string.album_spiner))){
                 String[] split = match_termo.split("\\|");
                 String album = split[2];
@@ -211,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }else if(categoria.equals(getString(album_pedro_bernardo2.ipleiria.pt.album.R.string.rating_spiner))){
                 String[] split = match_termo.split("\\|");
-                String rating_mus = split[4];
+                String rating_mus = split[5];
                 if(rating_mus.contains(termo) && termo.matches("\\d+") && !termo.isEmpty()) {
                     searchresults.add(match_termo);
                     found_mus++;
@@ -252,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText artistinput = new EditText(this);
         final EditText albuminput = new EditText(this);
         final EditText yearinput = new EditText(this);
+        final EditText publisherinput = new EditText(this);
         final EditText ratinginput = new EditText(this);
         build.setTitle(R.string.new_song_enter);
         build.setCancelable(true);
@@ -259,12 +274,14 @@ public class MainActivity extends AppCompatActivity {
         alert.addView(artistinput);
         alert.addView(albuminput);
         alert.addView(yearinput);
+        alert.addView(publisherinput);
         alert.addView(ratinginput);
         build.setView(alert);
         nameinput.setHint(R.string.hint_song);
         artistinput.setHint(R.string.hint_artist);
         albuminput.setHint(R.string.hint_album);
         yearinput.setHint(R.string.hint_year);
+        publisherinput.setHint(R.string.hint_publisher);
         ratinginput.setHint(R.string.hint_rating);
 
 
@@ -274,9 +291,10 @@ public class MainActivity extends AppCompatActivity {
                 String artistadd = artistinput.getText().toString();
                 String albumadd = albuminput.getText().toString();
                 String yearadd = yearinput.getText().toString();
+                String publisheradd = publisherinput.getText().toString();
                 String ratingadd = ratinginput.getText().toString();
                 if (yearadd.matches("\\d+") && !yearadd.isEmpty() && !nameadd.isEmpty() && !artistadd.isEmpty() && !albumadd.isEmpty() && !ratingadd.isEmpty()) {
-                    musicas.add(String.valueOf(nameadd) + " | " + String.valueOf(artistadd) + " | " + String.valueOf(albumadd) + " | " + String.valueOf(yearadd) + " | " + String.valueOf(ratingadd) + "☆");
+                    musicas.add(String.valueOf(nameadd) + " | " + String.valueOf(artistadd) + " | " + String.valueOf(albumadd) + " | " + String.valueOf(yearadd) + " | " +  String.valueOf(publisheradd) + " | " + String.valueOf(ratingadd) + "☆");
                     Toast.makeText(MainActivity.this, R.string.add_success, Toast.LENGTH_SHORT).show();
                     dialog.cancel();
 

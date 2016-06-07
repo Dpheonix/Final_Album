@@ -57,6 +57,13 @@
                 android:id="@+id/meta_year"
                 android:textSize="10dp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/publisher"
+                android:id="@+id/meta_publisher"
+                android:textSize="10dp" />
+
         </LinearLayout>
 
         <LinearLayout
