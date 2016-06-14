@@ -110,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> modoadapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,modos);
         spinop.setAdapter(modoadapter);
 
-        listamusica.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        listamusica.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 //Toast.makeText(MainActivity.this, "Clicou no item " + position, Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder build2 = new AlertDialog.Builder(MainActivity.this);
                 LinearLayout alert = new LinearLayout(MainActivity.this);
@@ -147,9 +147,6 @@ public class MainActivity extends AppCompatActivity {
 
                 build2.show();
 
-
-
-                return false;
 
             }
         });
